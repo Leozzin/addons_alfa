@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="import_data_wizard_views" model="ir.ui.view">
+    <field name="name">import data wizar views</field>
+    <field name="model">import.data</field>
+    <field name="arch" type="xml">
+      <form string="download file" icon="fa-download"> 
+        <group>  
+          <field name="upload_file"/> 
+          <field name="contract_template" invisible="1"/>
+          <field name="user"/>
+        </group>
+        <footer> 
+          <button string="IMPORT" type="object" name="data_upload_account" class="oe_highlight" />
+          <button string="CANCEL" class="btn btn-default btn-secondary" special="cancel"/>
+      </footer>
+      </form>
+    </field> 
+  </record>    
+ 
+  <record id="import_data_wizard_action" model="ir.actions.act_window">
+    <field name="name">Import Accounts</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">import.data</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+  </record>  
+  <record id="import_user_data_wizard_action" model="ir.actions.act_window">
+    <field name="name">Import Accounts</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">import.data</field>
+    <field name="context">{ 'default_user': 1}</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+  </record>   
+</odoo>        

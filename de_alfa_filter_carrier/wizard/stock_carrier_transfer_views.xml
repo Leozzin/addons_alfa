@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+    <record id="view_carrier_transfer" model="ir.ui.view">
+        <field name="name">Send pack</field>
+        <field name="model">stock.carrier.transfer</field>
+                    <field name="inherit_id" ref="de_alfa_send_multi_carrier.view_carrier_transfer"/>
+                    <field name="arch" type="xml">
+
+
+
+                    <group position="before">
+                        <div class="alert alert-info" attrs="{'invisible': [('message', '=', '')]}" role="status">
+                          <p> <field name="message" attrs="{'invisible': [('message', '=', '')]}" readonly="1"/> </p> </div>
+                    </group>
+                    </field>
+
+
+    </record>
+
+</odoo>

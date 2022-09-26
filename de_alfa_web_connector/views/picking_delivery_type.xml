@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="view_picking_form_amazon_fba" model="ir.ui.view">
+            <field name="name">stock.picking.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/notebook/page[@name='extra']/group/group/field[@name='move_type']" position="before">
+                    <field name="amazon_fba" string='Amazon FBA'/>
+                </xpath>
+           </field>
+        </record>
+    </data>
+</odoo>

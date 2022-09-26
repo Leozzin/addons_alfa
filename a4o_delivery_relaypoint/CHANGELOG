@@ -1,0 +1,20 @@
+Version 13.0.4 - 2021-07-15
+  * Adding possibility to hide added addresses
+Version 13.0.3 - 2021-03-15
+  * Getting transport price from sale
+  * Adding the original partner field
+  * Added common label printing method
+  * Transfer of common weight management information to this module
+Version 13.0.2 - 2020-12-10
+  * Bug fixes (see commit for details)
+Version 13.0.1 - 2020-12-02
+  * Port en v13
+Version 12.0.3 - 2020-08-15
+  * Reuse and avoid recreating the same address multiple times
+Version 12.0.2 - 2020-07-29
+  * Shipping weight management
+Version 12.0.1 - 2020-07-24
+  * Adding comments
+  * Code cleaning
+Version 12.0.0 - 2020-02-28
+  * Initial release

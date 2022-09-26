@@ -1,0 +1,249 @@
+<odoo>
+   <data noupdate="1" >
+    	
+    	<!-- <record id="action_cancel_sale_orders_multiple" model="ir.actions.server">
+	         <field name="name">Cancel Order</field>
+	         <field name="type">ir.actions.server</field>
+	         <field name="state">code</field>
+	         <field name="model_id" ref="de_alfa_web_connector.model_sale_order"/>
+	         <field name="binding_model_id" ref="de_alfa_web_connector.model_sale_order"/>
+	         <field name="code">
+				records.action_cancel_order_multiple()
+	         </field>
+	     </record> -->
+	     
+	     
+	     <record id="action_check_availability_multiple" model="ir.actions.server">
+	         <field name="name">Check Availability</field>
+	         <field name="type">ir.actions.server</field>
+	         <field name="state">code</field>
+	         <field name="model_id" ref="de_alfa_web_connector.model_stock_picking"/>
+	         <field name="binding_model_id" ref="de_alfa_web_connector.model_stock_picking"/>
+	         <field name="code">
+				records.action_check_availability()
+	         </field>
+	     </record>
+	     
+	     
+	     
+	     <!-- <record id="action_move_operation" model="ir.actions.server">
+	         <field name="name">Move Operation</field>
+	         <field name="type">ir.actions.server</field>
+	         <field name="state">code</field>
+	         <field name="model_id" ref="de_alfa_web_connector.model_stock_picking"/>
+	         <field name="binding_model_id" ref="de_alfa_web_connector.model_stock_picking"/>
+	         <field name="code">
+				records.move_operation()
+	         </field>
+	     </record> -->
+	     
+	     
+	     <record id="action_force_ureserve_multiple" model="ir.actions.server">
+	         <field name="name">Force Unreserve</field>
+	         <field name="type">ir.actions.server</field>
+	         <field name="state">code</field>
+	         <field name="model_id" ref="de_alfa_web_connector.model_stock_picking"/>
+	         <field name="binding_model_id" ref="de_alfa_web_connector.model_stock_picking"/>
+	         <field name="code">
+				records.delete_stock_move_line_unreserve()
+	         </field>
+	     </record>
+	     
+	     
+	     
+	     
+	     <record id="action_cancel_multiple" model="ir.actions.server">
+	         <field name="name">*Cancel*</field>
+	         <field name="type">ir.actions.server</field>
+	         <field name="state">code</field>
+	         <field name="model_id" ref="de_alfa_web_connector.model_stock_picking"/>
+	         <field name="binding_model_id" ref="de_alfa_web_connector.model_stock_picking"/>
+	         <field name="code">
+				records.cancel_multiple_x()
+	         </field>
+	     </record>
+	     
+	     
+	     <record id="action_reset_mark_todo_multiple" model="ir.actions.server">
+	         <field name="name">*Reset Draft --> Mark as TODO*</field>
+	         <field name="type">ir.actions.server</field>
+	         <field name="state">code</field>
+	         <field name="model_id" ref="de_alfa_web_connector.model_stock_picking"/>
+	         <field name="binding_model_id" ref="de_alfa_web_connector.model_stock_picking"/>
+	         <field name="code">
+				records.reset_draft_mark_todo_multiple_x()
+	         </field>
+	     </record>
+	     
+	     
+	     <record id="action_synch_info_multiple" model="ir.actions.server">
+	         <field name="name">Synch Info</field>
+	         <field name="type">ir.actions.server</field>
+	         <field name="state">code</field>
+	         <field name="model_id" ref="de_alfa_web_connector.model_stock_picking"/>
+	         <field name="binding_model_id" ref="de_alfa_web_connector.model_stock_picking"/>
+	         <field name="code">
+				records.synch_info()
+	         </field>
+	     </record>
+	     
+    	
+    	
+    	<record id="import_customers_products_orders_cron_modified" model="ir.cron">
+            <field name="name">Import Customers,Products,Orders,Avoirs To Odoo (Modified)</field>
+            <field name="model_id" ref="de_alfa_web_connector.model_res_partner"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model.import_customers_products_orders()</field>
+            <field name="interval_number">10</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+	        <field name="active" eval="True"/>
+	    </record>
+    	
+		<record id="action_import_customers_cron" model="ir.cron">
+            <field name="name">Import Customers To Odoo</field>
+            <field name="model_id" ref="de_alfa_web_connector.model_res_partner"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model.import_customers_cron()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+	        <field name="active" eval="False"/>
+	    </record>
+	    
+	    <record id="action_import_customers_cron_modified" model="ir.cron">
+            <field name="name">Import Customers To Odoo (Modified)</field>
+            <field name="model_id" ref="de_alfa_web_connector.model_res_partner"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model.import_customers_cron_modified()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+	        <field name="active" eval="False"/>
+	    </record>
+	    
+	    
+	    <record id="action_import_sale_orders_cron" model="ir.cron">
+            <field name="name">Import Sale Orders To Odoo</field>
+            <field name="model_id" ref="de_alfa_web_connector.model_sale_order"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model.import_sale_orders_cron()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+	        <field name="active" eval="False"/>
+	    </record>
+	    
+	    
+	    <record id="action_import_sale_orders_cron_modified" model="ir.cron">
+            <field name="name">Import Sale Orders To Odoo (Modified)</field>
+            <field name="model_id" ref="de_alfa_web_connector.model_sale_order"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model.import_sale_orders_cron_modified()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+	        <field name="active" eval="False"/>
+	    </record>
+		
+		
+		
+         <record id="action_get_product_cron" model="ir.cron">
+            <field name="name">Import Products To Odoo</field>
+            <field name="model_id" ref="de_alfa_web_connector.model_product_product"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model.import_products_cron()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+	        <field name="active" eval="False"/>
+	    </record>
+	    
+	    
+	    <record id="action_get_product_cron_modified" model="ir.cron">
+            <field name="name">Import Products To Odoo (Modified)</field>
+            <field name="model_id" ref="de_alfa_web_connector.model_product_product"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model.import_products_cron_modified()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+	        <field name="active" eval="False"/>
+	    </record>
+	    
+	    
+	    <record id="action_link_products_with_vendors_cron" model="ir.cron">
+            <field name="name">Link Products with Vendors</field>
+            <field name="model_id" ref="de_alfa_web_connector.model_product_supplierinfo"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model.import_product_vendors_link_cron()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+	        <field name="active" eval="False"/>
+	    </record>
+	    
+	    
+	    <record id="link_products_with_vendors_cron_modified" model="ir.cron">
+            <field name="name">Link Products with Vendors (Modified)</field>
+            <field name="model_id" ref="de_alfa_web_connector.model_product_supplierinfo"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model.import_product_vendors_link_cron_modified()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+	        <field name="active" eval="False"/>
+	    </record>
+	    
+	    
+	    <record id="send_products_stock_to_website_cron" model="ir.cron">
+            <field name="name">Send Products Stock To Website</field>
+            <field name="model_id" ref="de_alfa_web_connector.model_product_supplierinfo"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model.send_stock_to_website()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+	        <field name="active" eval="True"/>
+	    </record>
+	    
+	    
+	    <record id="send_stock_with_zero_to_new_opr_cron" model="ir.cron">
+            <field name="name">Send Stock With Zero To New Operation</field>
+            <field name="model_id" ref="de_alfa_web_connector.model_stock_picking"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model.check_transfers_for_stock_zero()</field>
+            <field name="interval_number">10</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+	        <field name="active" eval="False"/>
+	    </record>
+	    
+	    
+	    <record id="create_purchase_order_from_sale_cron" model="ir.cron">
+            <field name="name">Create Purchase Order from Sale</field>
+            <field name="model_id" ref="de_alfa_web_connector.model_sale_order"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model.create_purchase_order_from_sale()</field>
+            <field name="interval_number">10</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+	        <field name="active" eval="False"/>
+	    </record>
+	    
+	    
+
+    </data>
+</odoo>

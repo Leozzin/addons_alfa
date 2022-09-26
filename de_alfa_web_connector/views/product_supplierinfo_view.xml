@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="product_supplierinfo_form_view_inherit" model="ir.ui.view">
+		<field name="name">product.supplierinfo.form</field>
+	    <field name="model">product.supplierinfo</field>
+	    <field name="inherit_id" ref="product.product_supplierinfo_form_view"/>        
+	    <field name="arch" type="xml">
+			
+			
+			
+			<!-- <xpath expr="//field[@name='name']" position="after">
+				<button name='create_stock_quant' string="Create stock" type="object" class="btn_danger" />
+			</xpath> -->
+			
+		    <xpath expr="//sheet/group" position="after">
+				<group string="Other Details">
+					<group>
+						<field name="old_id" />
+						<field name="created_datetime" />
+						<field name="modified_datetime" />
+						<field name="provider_id" />
+						<field name="custom_product_id" />
+						<field name="code" />
+						<field name="promo" />
+					</group>
+					<group>
+						<field name="normal_price" />
+						<field name="selling_price" />
+						<field name="stock_promo" />
+						<field name="cotation" />
+						<field name="capacity_pg" />
+						<field name="capacity_ml" />
+						<field name="capacity_gr" />
+						<field name="bechlem" />
+					</group>
+				</group>
+		    </xpath>
+	
+        </field>
+    </record>
+	
+</odoo>
+
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="wizard_change_form" model="ir.ui.view">
+      <field name="name">Message wizard</field>
+      <field name="model">supplier.change</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Change Fournisseur" >
+            <group>
+                <field name="product_id" readonly="1"/>
+            </group>
+          <group>
+            <group>
+                <field name="ancien_supplier_id" readonly="1" />
+          <field name="ancien_supplier" readonly="1" invisible="1"/></group>
+         <group> <field name="new_supplier_id" domain="[('supplier_rank','>=',1)]" />
+
+             <field name="new_supplier" invisible="1" /></group> </group>
+          <newline/>
+          <separator colspan="6"/>
+          <footer>
+            <button name="change_supplier" class="oe_highlight" string="Changer fournisseur" type="object"/>
+
+            <button special="cancel" class="oe_highlight" string="Annuler" />
+          </footer>
+        </form>
+      </field>
+    </record>
+
+
+  </data>
+</odoo>

@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+1,import.data,model_import_data,base.group_user,1,1,1,1
+2,wizard.message,model_wizard_message,base.group_user,1,1,1,1
+3,stock.quant.access,stock.model_stock_quant,,1,1,1,1
+4,res.partner.category.custom,model_res_partner_category_custom,base.group_user,1,1,1,1
+5,supplierchange,model_supplier_change,base.group_user,1,1,1,1
+
+

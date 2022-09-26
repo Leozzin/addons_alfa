@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_delivery_slip_inherited" inherit_id="stock.report_delivery_document">
+        <xpath expr="//t/t/t[@name='partner_header']" position="replace">
+            <!-- <t t-if="partner" name="partner_header">
+                    <t t-set="address">
+                        <div t-esc="partner"
+                        t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True}'/>
+                   </t>
+                </t> -->
+                <div class="row">
+                    <div class="col-6">
+                        <div>
+                            <span>Delivery Address:</span>
+                        </div>
+                        <div>
+                            <span t-field="o.partner_id.name"/>
+                        </div>
+                        <div>
+                            <span t-field="o.partner_id.delivery_addres"/>
+                        </div>
+                        <div>
+                            <span t-field="o.partner_id.delivery_city"/>
+                        </div>
+                        <div>
+                            <span t-field="o.partner_id.phone"/>
+                            <!-- <div t-field="o.partner_id" t-options="{&quot;widget&quot;: &quot;delivery&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True}" /> -->
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div>
+                            <span>Billing Address:</span>
+                        </div>
+                        <div>
+                            <span t-field="o.partner_id.name"/>
+                        </div>
+                        <div>
+                            <span t-field="o.partner_id.street"/>
+                        </div>
+                        <div>
+                            <span t-field="o.partner_id.city"/>
+                        </div>
+                        <div>
+                            <span t-field="o.partner_id.phone"/>
+                            <!-- <div t-field="o.partner_id" t-options="{&quot;widget&quot;: &quot;delivery&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True}" /> -->
+                        </div>
+                    </div>
+                </div>
+        </xpath>
+    </template>
+</odoo>

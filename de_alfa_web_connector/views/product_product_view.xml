@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	
+	
+	<record id="product_template_form_view_inherit1" model="ir.ui.view">
+		<field name="name">product.template.form</field>
+	    <field name="model">product.template</field>
+	    <field name="inherit_id" ref="product.product_template_form_view"/>        
+	    <field name="arch" type="xml">
+			
+						
+			<xpath expr="//div[@name='options']" position="replace">
+				<div name="options" groups="base.group_user">
+                    <div>
+                        <field name="sale_ok"/>
+                        <label for="sale_ok" string="Can be Sold Telesales"/>
+                    </div>
+                    <div>
+	                    <field name="can_be_sold_online"/>
+	                    <label for="can_be_sold_online"/>
+	                </div>
+                    <div>
+                        <field name="purchase_ok"/>
+                        <label for="purchase_ok"/>
+                    </div>
+                </div>
+			</xpath>
+			
+        </field>
+    </record>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<!--	<record model="ir.ui.view" id="product_template_hs_code">-->
+<!--    <field name="name">product.template.form.hs_code</field>-->
+<!--    <field name="model">product.template</field>-->
+<!--    <field name="inherit_id" ref="product.product_template_form_view"/>-->
+<!--    <field name="arch" type="xml">-->
+<!--	       <xpath expr="//group[@name='group_lots_and_weight']" position="inside">-->
+<!--           <field name="capacity" />-->
+<!--        </xpath>-->
+<!--    </field>-->
+<!--</record>-->
+	
+	<record id="product_product_form_view_inherit1" model="ir.ui.view">
+		<field name="name">product.product.form</field>
+	    <field name="model">product.product</field>
+	    <field name="inherit_id" ref="product.product_normal_form_view"/>        
+	    <field name="arch" type="xml">
+			
+            <field name="weight" >
+				<field name="capacity_ml" />
+			</field>
+			<xpath expr="//div[@name='options']" position="replace">
+				<div name="options" groups="base.group_user">
+                    <div>
+                        <field name="sale_ok"/>
+                        <label for="sale_ok" string="Can be Sold Telesales"/>
+                    </div>
+                    <div>
+	                    <field name="can_be_sold_online"/>
+	                    <label for="can_be_sold_online"/>
+	                </div>
+                    <div>
+                        <field name="purchase_ok"/>
+                        <label for="purchase_ok"/>
+                    </div>
+                </div>
+			</xpath>
+			
+			<xpath expr="//field[@name='categ_id']" position="after">
+				<field name='qty_not_validated_yet' />
+			</xpath>
+			
+			
+		    <xpath expr="//notebook" position="inside">
+				<page string="Other Details">
+					<group>
+						<group>
+							<field name="old_id" />
+							 <field name="capacity_ml" />
+							<field name="model" />
+							<field name="model_id" />
+							<field name="created_datetime" />
+							<field name="modified_datetime" />
+							<field name="sku" />
+							<field name="ean" />
+							<field name="upc" />
+							<field name="brand" />
+							<field name="bechlem_id" />
+							<field name="star" />
+							<field name="designation" />
+						</group>
+						<group attrs="{'invisible': [('model','!=','Printer')]}">
+							<field name="printer_id" />
+							<field name="printer_model" />
+							<field name="printer_model" />
+							<field name="printer_oem" />
+							<field name="printer_partnr" />
+							<field name="technology" />
+							<field name="technologie" />
+							<field name="printer_type" />
+							<field name="printer_categorie" />
+							<field name="multifonction" />
+							<field name="numerisation" />
+							<field name="copie" />
+							<field name="rectoverso" />
+							<field name="rectoverso_mode" />
+							<field name="rectoverso_auto" />
+							<field name="couleur" />
+							<field name="format" />
+							<field name="connectivite" />
+							<field name="ppm_noir" />
+							<field name="ppm_couleur" />
+							<field name="date_fabrication" />
+							<field name="volume" />
+							<field name="segmentation" />
+							<field name="argument" />
+							<field name="contrat" />
+						</group>
+						<group attrs="{'invisible': [('model','!=','Supply')]}">
+							<field name="supply_id" />
+							<field name="supply_oem" />
+							<field name="supply_partnr" />
+							<field name="supply_technology" />
+							<field name="supply_type" />
+							<field name="supply_color" />
+							<field name="supply_model" />
+							<field name="supply_duree_extension" />
+							<field name="supply_capacity_page" />
+							<field name="supply_capacity_ml" />
+							<field name="supply_capacity_gr" />
+						</group>
+					</group>
+				</page>
+		    </xpath>
+	
+        </field>
+    </record>
+	
+</odoo>
+
+

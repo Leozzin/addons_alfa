@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# This file is part of an Adiczion's Module.
+# The COPYRIGHT and LICENSE files at the top level of this repository
+# contains the full copyright notices and license terms.
+-->
+<odoo>
+    <data noupdate="0">
+        <!-- Complete the dom-tom group -->
+       <!-- <record id="l10n_fr.dom-tom" model="res.country.group">
+             <field name="country_ids"
+                    eval="[(4, ref('base.wf')), (4, ref('base.tf'))]"/>
+       </record> -->
+        <record id="specific_territory" model="res.country.group">
+             <field name="name">Specific territory</field>
+             <field name="country_ids" eval="[(6,0,[
+                ref('base.es'), ref('base.it'), ref('base.de'),
+                ref('base.uk'), ref('base.gr')])]"/>
+       </record>
+    </data>
+    <data noupdate="1">
+        <record id="colissimo_custom_parcel" model="product.packaging">
+            <field name="name">Colissimo Custom Parcel</field>
+            <field name="max_weight">30.0</field>
+            <field name="package_carrier_type">colissimo</field>
+        </record>
+        <record id="product_product_delivery_colissimo_wo_signature" model="product.product">
+            <field name="name">Colissimo (w/o signature)</field>
+            <field name="default_code">colissimo01</field>
+            <field name="type">service</field>
+            <field name="categ_id" ref="delivery.product_category_deliveries"/>
+            <field name="sale_ok" eval="False"/>
+            <field name="purchase_ok" eval="False"/>
+            <field name="list_price">0.0</field>
+        </record>
+        <record id="product_product_delivery_colissimo_relay" model="product.product">
+            <field name="name">Colissimo (relay point)</field>
+            <field name="default_code">colissimo02</field>
+            <field name="type">service</field>
+            <field name="categ_id" ref="delivery.product_category_deliveries"/>
+            <field name="sale_ok" eval="False"/>
+            <field name="purchase_ok" eval="False"/>
+            <field name="list_price">0.0</field>
+        </record>
+        <record id="product_product_delivery_colissimo_signature" model="product.product">
+            <field name="name">Colissimo (signature)</field>
+            <field name="default_code">colissimo03</field>
+            <field name="type">service</field>
+            <field name="categ_id" ref="delivery.product_category_deliveries"/>
+            <field name="sale_ok" eval="False"/>
+            <field name="purchase_ok" eval="False"/>
+            <field name="list_price">0.0</field>
+        </record>
+
+        <record id="delivery_carrier_colissimo_wo_signature" model="delivery.carrier">
+            <field name="name">Colissimo (w/o signature)</field>
+            <field name="product_id" ref="a4o_delivery_colissimo.product_product_delivery_colissimo_wo_signature"/>
+            <field name="coli_service_type">wo_signature</field>
+            <field name="coli_country_origin_id" eval="ref('base.fr')"/>
+            <field name="delivery_type">colissimo</field>
+            <field name="coli_account_number">000000</field>
+            <field name="coli_passwd">secret_password</field>
+            <field name="coli_shipping_url">https://ws.colissimo.fr/sls-ws/SlsServiceWS?wsdl</field>
+            <!--<field name="cpst_tracking_url">https://ws.colissimo.fr/tracking-cxf/TrackingServiceWS?wsdl</field>-->
+            <field name="coli_relaypoint_url">https://ws.colissimo.fr/pointretrait-ws-cxf/PointRetraitServiceWS/2.0?wsdl</field>
+        </record>
+        <record id="delivery_carrier_colissimo_signature" model="delivery.carrier">
+            <field name="name">Colissimo (signature)</field>
+            <field name="product_id" ref="a4o_delivery_colissimo.product_product_delivery_colissimo_signature"/>
+            <field name="coli_service_type">signature</field>
+            <field name="coli_country_origin_id" eval="ref('base.fr')"/>
+            <field name="delivery_type">colissimo</field>
+            <field name="coli_account_number">000000</field>
+            <field name="coli_passwd">secret_password</field>
+            <field name="coli_shipping_url">https://ws.colissimo.fr/sls-ws/SlsServiceWS?wsdl</field>
+            <!--<field name="cpst_tracking_url">https://ws.colissimo.fr/tracking-cxf/TrackingServiceWS?wsdl</field>-->
+            <field name="coli_relaypoint_url">https://ws.colissimo.fr/pointretrait-ws-cxf/PointRetraitServiceWS/2.0?wsdl</field>
+        </record>
+        <record id="delivery_carrier_colissimo_relay" model="delivery.carrier">
+            <field name="name">Colissimo (relay point)</field>
+            <field name="coli_service_type">relaypoint</field>
+            <field name="product_id" ref="a4o_delivery_colissimo.product_product_delivery_colissimo_relay"/>
+            <field name="coli_country_origin_id" eval="ref('base.fr')"/>
+            <field name="delivery_type">colissimo</field>
+            <field name="coli_account_number">000000</field>
+            <field name="coli_passwd">secret_password</field>
+            <field name="coli_shipping_url">https://ws.colissimo.fr/sls-ws/SlsServiceWS?wsdl</field>
+            <!--<field name="coli_tracking_url">https://ws.colissimo.fr/tracking-cxf/TrackingServiceWS?wsdl</field>-->
+            <field name="coli_relaypoint_url">https://ws.colissimo.fr/pointretrait-ws-cxf/PointRetraitServiceWS/2.0?wsdl</field>
+        </record>
+    </data>
+</odoo>

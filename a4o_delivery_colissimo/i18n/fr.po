@@ -1,0 +1,899 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* a4o_delivery_colissimo
+#
+# Christophe <xt0ph@adiczion.net>, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-23 13:52+0000\n"
+"PO-Revision-Date: 2021-05-23 16:01+0200\n"
+"Last-Translator: Christophe <xt0ph@adiczion.net>\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+"Language: fr_FR\n"
+"X-Generator: Lokalize 20.12.0\n"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_insurance_level__1000_00
+msgid "1000 EUR"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.view_delivery_carrier_form_with_provider_colissimo
+msgid "123456"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_insurance_level__150_00
+msgid "150 EUR"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_insurance_level__2000_00
+msgid "2000 EUR"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_insurance_level__300_00
+msgid "300 EUR"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_insurance_level__500_00
+msgid "500 EUR"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_insurance_level__5000_00
+msgid "5000 EUR"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/data_tools.py:0
+#, python-format
+msgid "A 'source' or 'eval' attribute is required!"
+msgstr "Un attribut « source » ou « eval » est requis !"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/data_tools.py:0
+#, python-format
+msgid "A value for '{}' is required!"
+msgstr "Une valeur pour « {} » est requise!"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_carrier__coli_account_number
+msgid "Account Number"
+msgstr "Numéro de compte"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Account number"
+msgstr "Numéro de compte"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Address"
+msgstr "Adresse"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/data_tools.py:0
+#, python-format
+msgid "An attribut 'name' is required!"
+msgstr "Un attribut « nom » est requis !"
+
+#. module: a4o_delivery_colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.select_printer_view_form
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_product_packaging__package_carrier_type
+msgid "Carrier"
+msgstr "Transporteur"
+
+#. module: a4o_delivery_colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.select_printer_view_form
+msgid "Choose printer"
+msgstr "Sélectionnez une imprimante"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "City"
+msgstr "Ville"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_carrier__coli_printer_name
+msgid "Coli Printer Name"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__delivery_type__colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_slip__delivery_type__colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__product_packaging__package_carrier_type__colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.view_picking_internal_search_colissimo
+msgid "Colissimo"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model:delivery.carrier,name:a4o_delivery_colissimo.delivery_carrier_colissimo_relay
+#: model:product.product,name:a4o_delivery_colissimo.product_product_delivery_colissimo_relay
+#: model:product.template,name:a4o_delivery_colissimo.product_product_delivery_colissimo_relay_product_template
+msgid "Colissimo (relay point)"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model:delivery.carrier,name:a4o_delivery_colissimo.delivery_carrier_colissimo_signature
+#: model:product.product,name:a4o_delivery_colissimo.product_product_delivery_colissimo_signature
+#: model:product.template,name:a4o_delivery_colissimo.product_product_delivery_colissimo_signature_product_template
+msgid "Colissimo (signature)"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model:delivery.carrier,name:a4o_delivery_colissimo.delivery_carrier_colissimo_wo_signature
+#: model:product.product,name:a4o_delivery_colissimo.product_product_delivery_colissimo_wo_signature
+#: model:product.template,name:a4o_delivery_colissimo.product_product_delivery_colissimo_wo_signature_product_template
+msgid "Colissimo (w/o signature)"
+msgstr "Colissimo (sans signature)"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Colissimo Agency"
+msgstr "Colissimo Agence"
+
+#. module: a4o_delivery_colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.view_delivery_carrier_form_with_provider_colissimo
+msgid "Colissimo Configuration"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_res_config_settings__module_a4o_delivery_colissimo
+msgid "Colissimo Connector"
+msgstr "Connecteur Colissimo"
+
+#. module: a4o_delivery_colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.res_config_settings_view_form_sale
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.res_config_settings_view_form_stock
+msgid "Colissimo Delivery Methods"
+msgstr "Modes de livraison Colissimo"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,help:a4o_delivery_colissimo.field_delivery_carrier__coli_account_number
+msgid ""
+"Colissimo contract number (the same is used for the production and the "
+"tests)."
+msgstr ""
+"Numéro de contrat Colissimo (le même est utilisé pour la production et les"
+"tests)."
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid ""
+"Colissimo does not offer cancellation of requests. Do not put the package "
+"acts as cancellation."
+msgstr ""
+"Colissimo ne propose pas d'annulation des demandes d'enlèvement. Ne pas "
+"remettre le colis fait office d'annulation."
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/delivery_colissimo.py:0
+#, python-format
+msgid ""
+"Colissimo does not offer cancellation of requests.Do not put the package %s "
+"acts as cancellation!"
+msgstr ""
+"Colissimo ne propose pas d'annulation des demandes d'enlèvement. Ne pas "
+"remettre le colis %s fait office d'annulation."
+
+#. module: a4o_delivery_colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.view_picking_internal_search_colissimo
+msgid "Collection carried out and sent with Colissimo carrier"
+msgstr "Enlèvement effectué et expédié par transporteur Colissimo"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_customs_category__2
+msgid "Commercial sample"
+msgstr "Échantillon commercial"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_customs_category__3
+msgid "Commercial shipment"
+msgstr "Expédition commerciale"
+
+#. module: a4o_delivery_colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.res_config_settings_view_form_sale
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.res_config_settings_view_form_stock
+msgid "Compute shipping costs and ship with Colissimo"
+msgstr "Calculez les frais de port et expédiez avec Colissimo"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model,name:a4o_delivery_colissimo.model_res_config_settings
+msgid "Config Settings"
+msgstr "Paramètres de config"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Contract number"
+msgstr "Numéro de contrat"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Country Code"
+msgstr "Code postal"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,help:a4o_delivery_colissimo.field_delivery_carrier__coli_country_origin_id
+msgid ""
+"Country of origin of the product by default (if it is not indicated on the "
+"product)"
+msgstr ""
+"Pays d'origine du produit par défaut (s'il n'est pas indiqué sur le"
+"produit)"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_select_printer__create_uid
+msgid "Created by"
+msgstr "Crée par"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_select_printer__create_date
+msgid "Created on"
+msgstr "Crée le"
+
+#. module: a4o_delivery_colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.view_delivery_carrier_form_with_provider_colissimo
+msgid "Customs"
+msgstr "Douane"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_carrier__coli_customs_category
+msgid "Customs category"
+msgstr "Catégorie douanière"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_label_format__dpl_10x15_203dpi
+msgid "DPL 10x15 203dpi"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_label_format__dpl_10x15_300dpi
+msgid "DPL 10x15 300dpi"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_carrier__coli_country_origin_id
+msgid "Default Country of Origin"
+msgstr "Pays d'origine par défaut"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_carrier__coli_insurance_level
+msgid "Default Level of Insurance"
+msgstr "Niveau d'assurance par défaut"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,help:a4o_delivery_colissimo.field_delivery_carrier__coli_insurance_level
+msgid ""
+"Default insurance level if the value of the shipment does not exceed the "
+"minimum value to be insured"
+msgstr ""
+"Niveau d'assurance par défaut si la valeur de l'envoi ne dépasse pas la"
+"valeur minimale à assurer"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model,name:a4o_delivery_colissimo.model_choose_delivery_package
+msgid "Delivery Package Selection Wizard"
+msgstr "Assistant de sélection d'emballage"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/delivery_colissimo.py:0
+#: model:ir.model,name:a4o_delivery_colissimo.model_delivery_slip
+#, python-format
+msgid "Delivery Slip"
+msgstr "Bordereau de livraison"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_slip__delivery_type
+msgid "Delivery Type"
+msgstr "Type de livraison"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/delivery_colissimo.py:0
+#, python-format
+msgid "Delivery slip getting from Colissimo<br/> <b>with number:</b> %s"
+msgstr "Bordereau de livraison de Colissimo <br/> <b>avec le numéro : </b>%s"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/delivery_colissimo.py:0
+#, python-format
+msgid "Delivery_Slip_%s.pdf"
+msgstr "Bordereau_de_livraison_%s.pdf"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Description"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.view_delivery_carrier_form_with_provider_colissimo
+msgid "Details"
+msgstr "Détails"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_carrier__coli_direct_printing
+msgid "Direct Printing"
+msgstr "Impression directe"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,help:a4o_delivery_colissimo.field_delivery_carrier__coli_direct_printing
+msgid ""
+"Directly print the label when the delivery is validate,if the module : "
+"base_report_to_printer is installed"
+msgstr ""
+"Imprimez directement l'étiquette lors de la validation de la livraison, si le"
+" module:"
+"base_report_to_printer est installé"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_select_printer__display_name
+msgid "Display Name"
+msgstr "Affiche un nom"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_customs_category__4
+msgid "Document"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/delivery_colissimo.py:0
+#, python-format
+msgid "Don't forget to check the price!"
+msgstr "N'oubliez pas de vérifier le prix!"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_service_type__eco
+msgid "Eco (Only for Oversea)"
+msgstr "Eco (uniquement pour l'Outre-mer)"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Error from Colissimo API: %s"
+msgstr "Erreur de l'API Colissimo : %s"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Error when retrieve label(s): %s (%s)"
+msgstr "Erreur lors de la récupération des étiquettes : %s (%s)"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Error when retrieve relay points: %s (%s)"
+msgstr "Erreur lors de la récupération des points de relais: %s (%s)"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/delivery_colissimo.py:0
+#, python-format
+msgid "Error!"
+msgstr "Erreur !"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Fault from Colissimo API: %s"
+msgstr "Erreur de l'API Colissimo : %s"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Free of Taxe and Duty"
+msgstr "Exempt de taxes et de droits"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_customs_category__1
+msgid "Gift"
+msgstr "Cadeau"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "HS Code"
+msgstr "Code SH"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_select_printer__id
+msgid "ID"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_carrier__coli_label_format
+msgid "Label Colissimo Format"
+msgstr "Format de l'étiquette Colissimo"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/delivery_colissimo.py:0
+#, python-format
+msgid "Label_Colissimo-%s.%s"
+msgstr "Etiquette_Colissimo-%s.%s"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/delivery_colissimo.py:0
+#, python-format
+msgid "Label_Colissimo.pdf"
+msgstr "Etiquette_Colissimo.pdf"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Lang"
+msgstr "Langue"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_select_printer____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_select_printer__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_select_printer__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,help:a4o_delivery_colissimo.field_delivery_carrier__coli_max_point
+msgid "Max number of relay points returned by the search request."
+msgstr "Nombre maximum de points relais renvoyés par la demande de recherche."
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,help:a4o_delivery_colissimo.field_delivery_carrier__coli_distance_search
+msgid "Maximum search distance of relay points in the request."
+msgstr "Distance de recherche maximale des points relais dans la demande."
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_customs_category__6
+msgid "Merchandise return"
+msgstr "Retour de marchandise"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_carrier__coli_insurance_min_value
+msgid "Minimum value to be insured"
+msgstr "Valeur minimale à assurer"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model,name:a4o_delivery_colissimo.model_ir_module_module
+msgid "Module"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,help:a4o_delivery_colissimo.field_delivery_carrier__coli_customs_category
+msgid "Nature of the shipment used in the CN23 declaration."
+msgstr "Nature de l'envoi utilisé dans la déclaration CN23."
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/delivery_colissimo.py:0
+#, python-format
+msgid "No delivery slip was returned!"
+msgstr "Aucun bordereau de livraison n'a été retourné!"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/delivery_colissimo.py:0
+#, python-format
+msgid "Only digit chars are authorised in this field!"
+msgstr "Seuls les caractères numériques sont autorisés dans ce champ !"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Option Inter."
+msgstr "Option international"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Origin Country"
+msgstr "Pays d'origine"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_customs_category__5
+msgid "Other"
+msgstr "Autre"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_label_format__pdf_10x15_300dpi
+msgid "PDF 10x15 300dpi"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_label_format__pdf_a4_300dpi
+msgid "PDF A4 300dpi"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/delivery_colissimo.py:0
+#, python-format
+msgid "Package %s"
+msgstr "Colis %s"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model,name:a4o_delivery_colissimo.model_stock_quant_package
+msgid "Packages"
+msgstr "Colis"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_carrier__coli_passwd
+#, python-format
+msgid "Password"
+msgstr "Mot de passe"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,help:a4o_delivery_colissimo.field_delivery_carrier__coli_passwd
+msgid "Password to use for connection"
+msgstr "Mot de passe à utiliser pour la connexion"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/delivery_colissimo.py:0
+#, python-format
+msgid "Please install and configure module :base_report_to_printer"
+msgstr "Veuillez installer et configurer le module: base_report_to_printer"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Post office"
+msgstr "Bureau de poste"
+
+#. module: a4o_delivery_colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.view_delivery_carrier_form_with_provider_colissimo
+msgid "Pricing"
+msgstr "Tarif"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_carrier__coli_printer_id
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_select_printer__printer_id
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.select_printer_view_form
+msgid "Printer"
+msgstr "Imprimante"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model,name:a4o_delivery_colissimo.model_select_printer
+msgid "Printer Selection Wizard"
+msgstr "Assistant de sélection d'imprimante"
+
+#. module: a4o_delivery_colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.view_delivery_carrier_form_with_provider_colissimo
+msgid "Printing Options"
+msgstr "Options d'impression"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model,name:a4o_delivery_colissimo.model_product_product
+msgid "Product"
+msgstr "Article"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model,name:a4o_delivery_colissimo.model_product_packaging
+msgid "Product Packaging"
+msgstr "Emballage des produits"
+
+#. module: a4o_delivery_colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.view_delivery_carrier_form_with_provider_colissimo
+msgid "Production environment"
+msgstr "Environnement de production"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_carrier__delivery_type
+msgid "Provider"
+msgstr "Transporteur"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Quantity"
+msgstr "Quantité"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_carrier__coli_relaypoint_url
+msgid "Relay Point URL"
+msgstr "URL du point de relais"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_carrier__coli_max_point
+msgid "Relay Points Max"
+msgstr "Points relais max."
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_service_type__relaypoint
+#, python-format
+msgid "Relay point"
+msgstr "Point relais"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_carrier__coli_remove_label
+msgid "Remove the attached colissimo label"
+msgstr "Retirer l'étiquette colissimo jointe"
+
+#. module: a4o_delivery_colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.select_printer_view_form
+msgid "Retrieving the list of printers."
+msgstr "Récupération de la liste des imprimantes."
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Return Type"
+msgstr "Type de retour"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_carrier__coli_distance_search
+msgid "Search distance"
+msgstr "Distance de recherche"
+
+#. module: a4o_delivery_colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.view_delivery_carrier_form_with_provider_colissimo
+msgid "Select a printer"
+msgstr "Sélectionnez une imprimante"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/delivery_colissimo.py:0
+#, python-format
+msgid "Select the printer"
+msgstr "Sélectionnez l'imprimante"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_carrier__coli_service_type
+msgid "Service type"
+msgstr "Type de service"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/delivery_colissimo.py:0
+#, python-format
+msgid ""
+"Shipment created into Colissimo<br/> <b>Tracking Numbers:</b> "
+"%s<br/><b>Packages:</b> %s"
+msgstr ""
+"Envoi créé en Colissimo <br/> <b> Numéros de suivi : </b>%s<br/><b>Packages "
+": </b>%s"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Shipping Date"
+msgstr "Date d'expédition"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model,name:a4o_delivery_colissimo.model_delivery_carrier
+msgid "Shipping Methods"
+msgstr "Méthodes d'expédition"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,field_description:a4o_delivery_colissimo.field_delivery_carrier__coli_shipping_url
+msgid "Shipping URL (colissimo)"
+msgstr "URL de livraison (colissimo)"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/data_tools.py:0
+#, python-format
+msgid "Some attribut doesn't exist: {}!"
+msgstr "Un attribut n'existe pas : {} !"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Some products have not been put in packages!"
+msgstr "Certains produits n'ont pas été emballés !"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/delivery_colissimo.py:0
+#, python-format
+msgid "Some selected pickings are no tracking number!"
+msgstr "Certains colisages sélectionnées n'ont pas de numéro de suivi !"
+
+#. module: a4o_delivery_colissimo
+#: model:res.country.group,name:a4o_delivery_colissimo.specific_territory
+msgid "Specific territory"
+msgstr "Territoire spécifique"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/stock_picking.py:0
+#, python-format
+msgid ""
+"The point type (%s) of the destination address is not in the list of point "
+"type defined (%s) !"
+msgstr ""
+"Le type de point (%s) de l'adresse de destination ne figure pas dans la "
+"liste des pointstype défini (%s) !"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid ""
+"The quality of the response is poor ! There is no relay point around the "
+"address indicated."
+msgstr ""
+"La qualité de la réponse est médiocre ! Il n'y a pas de point relais autour "
+"duadresse indiquée."
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/delivery_colissimo.py:0
+#, python-format
+msgid "This field must have to %s characters!"
+msgstr "Ce champ doit contenir jusqu'à %s caractères !"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,help:a4o_delivery_colissimo.field_delivery_carrier__coli_service_type
+msgid "To select."
+msgstr "Pour sélectionner."
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Total amount"
+msgstr "Montant total"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model,name:a4o_delivery_colissimo.model_stock_picking
+msgid "Transfer"
+msgstr "Transfert"
+
+#. module: a4o_delivery_colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.view_delivery_carrier_form_with_provider_colissimo
+msgid "URL(s)"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/stock_picking.py:0
+#, python-format
+msgid "Unable to determine a service (product code) !!!"
+msgstr "Impossible de déterminer un service (code produit) !!!"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Unit price"
+msgstr "Prix unitaire"
+
+#. module: a4o_delivery_colissimo
+#: model:product.product,uom_name:a4o_delivery_colissimo.product_product_delivery_colissimo_relay
+#: model:product.product,uom_name:a4o_delivery_colissimo.product_product_delivery_colissimo_signature
+#: model:product.product,uom_name:a4o_delivery_colissimo.product_product_delivery_colissimo_wo_signature
+#: model:product.template,uom_name:a4o_delivery_colissimo.product_product_delivery_colissimo_relay_product_template
+#: model:product.template,uom_name:a4o_delivery_colissimo.product_product_delivery_colissimo_signature_product_template
+#: model:product.template,uom_name:a4o_delivery_colissimo.product_product_delivery_colissimo_wo_signature_product_template
+msgid "Units"
+msgstr "Unités"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,help:a4o_delivery_colissimo.field_delivery_carrier__coli_relaypoint_url
+msgid "WSDL url for searching relay point."
+msgstr "URL WSDL de recherche des points relais."
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,help:a4o_delivery_colissimo.field_delivery_carrier__coli_shipping_url
+msgid "WSDL url for shipping."
+msgstr "URL WSDL pour l'expédition."
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Weight"
+msgstr "Poids"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Weight in grams"
+msgstr "Poids en grammes"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Weight of parcel"
+msgstr "Poids du colis"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,help:a4o_delivery_colissimo.field_delivery_carrier__coli_remove_label
+msgid "When canceling a shipment, remove the attached labels."
+msgstr "Quand une expédition est annulée, supprime les étiquettes attachées."
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_service_type__signature
+msgid "With signature"
+msgstr "Avec signature"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_insurance_level__0_0
+msgid "Without"
+msgstr "Sans"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_service_type__wo_signature
+msgid "Without signature"
+msgstr "Sans signature"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/stock_picking.py:0
+#, python-format
+msgid "You cannot select a Consigne Pickup Station in this country (%s)"
+msgstr ""
+"Vous ne pouvez pas sélectionner « Consigne Pickup Station » dans ce pays "
+"(%s) !"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_label_format__zpl_10x15_203dpi
+msgid "ZPL 10x15 203dpi"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields.selection,name:a4o_delivery_colissimo.selection__delivery_carrier__coli_label_format__zpl_10x15_300dpi
+msgid "ZPL 10x15 300dpi"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "Zip code"
+msgstr "Code postal"
+
+#. module: a4o_delivery_colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.view_delivery_carrier_form_with_provider_colissimo
+msgid "https://server.com/folder/WebService?wsdl"
+msgstr ""
+
+#. module: a4o_delivery_colissimo
+#: model_terms:ir.ui.view,arch_db:a4o_delivery_colissimo.view_delivery_carrier_form_with_provider_colissimo
+msgid ""
+"open the wizard for selecting a printer if base_report_to_printer module is "
+"installed."
+msgstr ""
+"ouvrir l'assistant de sélection d'une imprimante si le module "
+"[base_report_to_printer] estinstallé."
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "password"
+msgstr "mot de passe"
+
+#. module: a4o_delivery_colissimo
+#: model:ir.model.fields,help:a4o_delivery_colissimo.field_delivery_carrier__coli_printer_id
+#: model:ir.model.fields,help:a4o_delivery_colissimo.field_select_printer__printer_id
+msgid "printer"
+msgstr "Imprimante"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/models/colissimo_request.py:0
+#, python-format
+msgid "recipient zip code"
+msgstr "code postal du destinataire"
+
+#. module: a4o_delivery_colissimo
+#: code:addons/a4o_delivery_colissimo/data_tools.py:0
+#, python-format
+msgid "unable to have 'default' and 'late_default' attributes together!"
+msgstr ""
+"impossible d'avoir les attributs « default » et « late_default » ensemble !"

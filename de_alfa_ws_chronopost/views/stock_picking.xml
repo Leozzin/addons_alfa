@@ -1,0 +1,26 @@
+<odoo>
+    <record id="view_stock_picking_alfa_form" model="ir.ui.view">
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="after">
+                <div class="right"> <field name="status_code" widget="badge" decoration-info="1" /></div>
+
+
+            </div>
+            <xpath expr="//notebook" position="inside">
+                <page string="Packages">
+                    <field name="package_ids" >
+                        <tree editable="bottom">
+                         <field name="name" />
+
+                <field name="carrier_tracking_ref" />
+                <field name="carrier_tracking_url" widget="url"/>
+                           <field name="status_code" widget="badge" decoration-info="1" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

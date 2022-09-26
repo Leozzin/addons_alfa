@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_multiple_carrier_send" model="ir.actions.server">
+	         <field name="name">Send to carrier</field>
+	         <field name="type">ir.actions.server</field>
+	         <field name="state">code</field>
+	         <field name="model_id" ref="stock.model_stock_picking"/>
+	         <field name="binding_model_id" ref="stock.model_stock_picking"/>
+	         <field name="code">
+				action = records.send_carrier()
+	         </field>
+	     </record>
+    <record id="action_download_multiple_label" model="ir.actions.server">
+	         <field name="name">Download Tracking</field>
+	         <field name="type">ir.actions.server</field>
+	         <field name="state">code</field>
+	         <field name="model_id" ref="stock.model_stock_picking"/>
+	         <field name="binding_model_id" ref="stock.model_stock_picking"/>
+	         <field name="code">
+				action = records.action_all_in_pdf()
+	         </field>
+	     </record>
+
+    <record id="view_carrier_transfer" model="ir.ui.view">
+        <field name="name">Send pack</field>
+        <field name="model">stock.carrier.transfer</field>
+
+        <field name="arch" type="xml">
+            <form string="Choice your provider?">
+
+                <group>
+                   <field name="pick_ids" invisible="1"/>
+                    <field name="carrier_id" />
+
+                </group>
+             <!--   <group>
+                    <field name="number_of_packages" /></group> -->
+                     <footer>
+                    <button name="apply" string="Apply" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+
+        </field>
+    </record>
+</odoo>

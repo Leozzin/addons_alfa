@@ -1,0 +1,172 @@
+from odoo import fields, models
+import base64
+import os
+import io
+from PyPDF2 import PdfFileReader, PdfFileMerger
+import requests
+import json
+from requests.auth import HTTPBasicAuth
+from datetime import datetime
+
+
+
+
+class StockPicking(models.Model):
+    _inherit = "stock.picking"
+
+    delivery_country=fields.Char(related="partner_id.delivery_country",store=True,string="Country")
+
+    def correct_country(self):
+        #for i in self.env['res.partner'].search([('billing_country','!=',False)]):
+         #   search=self.env['res.country'].search(['|',('code','=',i.billing_country),('name','=ilike',i.billing_country)])
+         #   if search:
+          #      i.country_id=search[0].id
+        for i in self.env['res.partner'].search([]):   
+            i._get_picking()
+            
+    def correct_pickibg(self):
+        for i in self.env['res.partner'].search([]):   
+            i._get_picking()
+
+
+
+    def send_product_tracking_to_website(self, carrier_id, tracking, detail_order_id):
+        
+        url = 'http://141.94.171.159/crm/Companies/majTracking?iscron=cron'
+        post_data = {'detail_order_id':detail_order_id, 'carrier': str(
+            carrier_id.name), 'tracking': tracking}
+        response = requests.post(url, json=post_data, auth=HTTPBasicAuth('alfaprint', '590-Alfaprint'))
+
+    def tracking_send(self):
+        for p in self:
+            for move_line in p.move_line_ids_without_package:
+                if move_line.result_package_id:
+                    if move_line.result_package_id.carrier_tracking_ref:
+                        self.send_product_tracking_to_website(p.carrier_id,
+                                                              move_line.result_package_id.carrier_tracking_ref,
+                                                              move_line.move_id.detail_order_id)
+    def update_tracking(self):
+        for s in self.env['stock.picking'].search([('carrier_id','=',2)]):
+            s.tracking_state_update()
+    def action_all_picking(self,picking):
+            picking = picking.filtered(lambda s: s.pdf_label)
+            if picking:
+                dist = r'C:\Program Files\Odoo 14.0.20211129\server\addons_alfa\de_alfa_ws_tnt\static\description\files\tnt_tmp'
+                os.chdir(dist)
+                print(os.listdir())
+                for p in picking:
+                    with open(p.origin+'.pdf', 'wb') as f:
+                        f.write(base64.b64decode(p.pdf_label))
+                    f.close()
+                merger = PdfFileMerger(strict=True)
+
+                for p in picking:
+                    merger.append(PdfFileReader(open(p.origin+'.pdf', 'rb')),import_bookmarks=False)
+                now = datetime.now()
+
+
+                # dd/mm/YY H:M:SSS
+                dt_string = now.strftime("%d-%m-%Y-%H:%M")
+                name= 'TNT'+ str(dt_string)
+                print (name)
+                merger.write(name+'.pdf')
+                merger.close()
+                #for p in picking:
+                    #os.remove(p.origin+'.pdf')
+
+                attachment_id=self.env["ir.attachment"].create(
+                    {
+
+                        "name": name+'.pdf',
+                        "type": "url",
+                        "url": '/de_alfa_ws_tnt\static/description/files/tnt_tmp/' + name+'.pdf',
+                        # "url": "/theme_default\static/description/icon.png",
+                      # "res_model": 'stock.picking',
+                      #  "res_id": picking[0].id,
+                    }
+                )
+
+                download_url = '/web/content/' + str(attachment_id.id) + '?download=true'
+                base_url = self.env['ir.config_parameter'].get_param('web.base.url')
+
+                url=str(base_url) + str(download_url)
+                print(url)
+                return {
+                    'type': 'ir.actions.act_url',
+                    'url': url,
+                    'target': 'new',
+                }
+            return True
+    def action_all_in_pdf(self):
+            picking = self.env['stock.picking'].browse(self.env.context.get('active_ids')).filtered(lambda s: s.pdf_label)
+            if picking:
+                dist = r'C:\Program Files\Odoo 14.0.20211129\server\addons_alfa\de_alfa_ws_tnt\static\description\files\tnt_tmp'
+                os.chdir(dist)
+                print(os.listdir())
+                for p in picking:
+                    with open(p.origin+'.pdf', 'wb') as f:
+                        f.write(base64.b64decode(p.pdf_label))
+                    f.close()
+                merger = PdfFileMerger(strict=True)
+
+                for p in picking:
+                    merger.append(PdfFileReader(open(p.origin+'.pdf', 'rb')),import_bookmarks=False)
+                now = datetime.now()
+
+
+                # dd/mm/YY H:M:SSS
+                dt_string = now.strftime("%d-%m-%Y-%H:%M")
+                name= 'TNT'+ str(dt_string)
+                print (name)
+                merger.write(name+'.pdf')
+                merger.close()
+                #for p in picking:
+                    #os.remove(p.origin+'.pdf')
+
+                attachment_id=self.env["ir.attachment"].create(
+                    {
+
+                        "name": name+'.pdf',
+                        "type": "url",
+                        "url": '/de_alfa_ws_tnt\static/description/files/tnt_tmp/' + name+'.pdf',
+                        # "url": "/theme_default\static/description/icon.png",
+                      # "res_model": 'stock.picking',
+                      #  "res_id": picking[0].id,
+                    }
+                )
+
+                download_url = '/web/content/' + str(attachment_id.id) + '?download=true'
+                base_url = self.env['ir.config_parameter'].get_param('web.base.url')
+
+                url=str(base_url) + str(download_url)
+                print(url)
+                return {
+                    'type': 'ir.actions.act_url',
+                    'url': url,
+                    'target': 'new',
+                }
+
+
+
+    def send_carrier(self):
+        # record = self.env['stock.picking'].browse(self.env.context.get('active_ids'))
+        # num = 0
+        # for r in record:
+        #     print ("rescord")
+        #     print (r)
+        #     print (num)
+        #     if r.package_ids:
+        #         num = num + len(record.package_ids)
+        #     else:
+        #         num = num + 1
+        # print ("Hello num")
+        # print (num)
+        return {
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model' :'stock.carrier.transfer',
+            'target': 'new',
+            'type': 'ir.actions.act_window',
+            'context': dict(self.env.context, default_pick_ids=[(4, p.id) for p in self]),
+
+        }

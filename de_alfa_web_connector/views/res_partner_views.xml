@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<menuitem id="import_account_data_id" name="Import Accounts"
+		action="import_data_wizard_action" sequence="1"
+		parent="purchase.menu_purchase_config" />
+	<menuitem id="import_user_data_id" name="Import Sales Person"
+		action="import_user_data_wizard_action" parent="base.menu_users" />
+
+	<record id="custom_view_partner_property_form"
+		model="ir.ui.view">
+		<field name="name">res.partner.carrier.property.form.inherit</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_form" />
+		<field name="arch" type="xml">
+		
+			<xpath expr="//field[@name='category_id']" position="replace">
+				<field name="custom_category_id" />
+			</xpath>
+			
+			<xpath expr="//notebook" position="inside">
+				<page string="Other Detail">
+					<group>
+						<group>
+							<field name="old_api_id" />
+							<field name="siret" />
+							<field name="activity" />
+							<field name="email2" />
+							<field name="street" string="Billing Addres" />
+							<field name="city" string="Billing City" />
+							<field name="zip" string="Billing Code Zip" />
+							<field name="billing_country" />
+						</group>
+						<group>
+							<field name="custom_modified" />
+							<field name="custom_type" />
+							<field name="region_name" />
+							<field name="delivery_addres" />
+							<field name="delivery_city" />
+							<field name="delivery_code_zip" />
+							<field name="delivery_country" />
+						</group>
+					</group>
+				</page>
+			</xpath>
+		</field>
+	</record>
+
+
+
+
+	<record id="custom_view_res_users_form" model="ir.ui.view">
+		<field name="name">res.users.form.inherit</field>
+		<field name="model">res.users</field>
+		<field name="inherit_id" ref="base.view_users_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//notebook" position="before">
+				<group>
+					<group>
+						<field name="old_api_id" required="True"/>
+					</group>
+				</group>
+			</xpath>
+		</field>
+	</record>
+
+	
+	<record id="base_setup.res_partner_kanban_view" model="ir.ui.view">
+         <field name="name">res.partner.kanban.inherit</field>
+         <field name="model">res.partner</field>
+         <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+         <field name="arch" type="xml">
+             <xpath expr="//div[hasclass('oe_kanban_partner_categories')]" position="inside">
+                 <span class="oe_kanban_list_many2one">
+                     <field name="custom_category_id"/>
+                 </span>
+             </xpath>
+         </field>
+     </record>
+     
+     
+     <record id="view_res_partner_filter_inhert_tagss" model="ir.ui.view">
+            <field name="name">res.partner.select.tagss</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+            	
+            	
+            	<xpath expr="//group" position="inside">
+                	<filter name="custom_category_id" string="Tags" domain="[]" context="{'group_by' : 'custom_category_id'}" />
+				</xpath>
+
+            </field>
+        </record>
+
+
+</odoo>
+

@@ -1,0 +1,113 @@
+from odoo import http
+from odoo import _, SUPERUSER_ID
+from odoo.http import request
+import json
+
+
+
+class ScanController(http.Controller):
+
+
+
+    @http.route('/picking/validate/<string:barcode>', type='http', auth='none')
+    def pickingvalidate(self,barcode):
+        """ validate picking. """
+        env = request.env(user=SUPERUSER_ID, su=True)
+        pickings=env['stock.picking'].sudo().search([('id','=',barcode)])
+        return request.make_response(json.dumps({"message": barcode), headers=[('Content-Type', 'application/json')])
+        if pickings:
+
+
+            trouve=0
+            for p in pickings:
+
+                if p.picking_type_id.sequence_code==barcode:
+                    trouve=1
+
+                    if p.state not in ['done']:
+
+                        p.action_confirm()
+
+                        for i in p.move_ids_without_package:
+                            i.quantity_done = i.product_uom_qty
+                            if i.product_uom_qty <= 0:
+                                i.product_uom_qty = 1
+                                i.quantity_done = 1
+
+                        p.button_validate()
+                        # p.write({"carrier_id": 2})
+                        # p.carrier_id.send_shipping(p)
+                        # p.tracking_send()
+                        # env['stock.picking'].sudo().action_all_picking(p)
+                        data = {
+                                'status': 200,
+                             'message': 'Vous avez validé le transfert' ,
+                        }
+
+                        return request.make_response(json.dumps(data), headers=[('Content-Type', 'application/json')])
+
+                    else:
+                        data = {
+                            'status': 208,
+                            'message': 'Le transfert est déja validé',
+                        }
+
+                        return request.make_response(json.dumps(data), headers=[('Content-Type', 'application/json')])
+            if trouve==0:
+
+                data = {
+                    'status': 404,
+                    'message': 'Le transfert n\'existe pas',
+                }
+                return request.make_response(json.dumps(data), headers=[('Content-Type', 'application/json')])
+
+        else:
+            data = {
+                'status': 404,
+                'message': 'Le transfert n\'existe pas',
+            }
+            return request.make_response(json.dumps(data), headers=[('Content-Type', 'application/json')])
+
+
+    @http.route('/test', type='json', auth='none')
+    def test(self, **kw):
+        print(kw)
+        data = {
+            "id": 5,
+        }
+        return data
+        return request.make_response(json.dumps(data), headers=[('Content-Type', 'application/json')])
+        #return Response({"name": "response data"})
+
+    # request.session.db
+    @http.route('/picking/show/<string:barcode>', type='http', auth='none')
+    def pickingshow(self, barcode):
+        """ validate picking. """
+        env = request.env(user=SUPERUSER_ID, su=True)
+        list_in = barcode.split('-')
+        pickings = env['stock.picking'].sudo().search([('origin', '=', list_in[2])])
+        for p in pickings:
+            if p.picking_type_id.sequence_code == list_in[1]:
+                data = {
+                    "id": p.id
+                }
+
+                return request.make_response(json.dumps(data), headers=[('Content-Type', 'application/json')])
+        else:
+            return request.make_response(json.dumps({"message": "Not Found"}), headers=[('Content-Type', 'application/json')])
+            
+    @http.route('/picking/get-products/<string:barcode>', type='http', auth='none')
+    def getPickingProducts(self, barcode):
+        list_in = barcode.split('-')
+        env = request.env(user=SUPERUSER_ID, su=True)
+        pickings = env['stock.picking'].sudo().search([('origin', '=', list_in[2])])
+        for p in pickings:
+            if p.picking_type_id.sequence_code == list_in[1]:
+                query = """select p.id as picking_id, s2.custom_product_id, s2.name
+                from sale_order_line s2, stock_picking p
+                where p.sale_id=s2.order_id and p.id=%s"""
+                env.cr.execute(query, (p.id,))
+                result = [list(item) for item in env.cr.fetchall()]
+                return request.make_response(json.dumps(result), headers=[('Content-Type', 'application/json')])
+        else:
+            return request.make_response(json.dumps({"message": "not found"}), headers=[('Content-Type', 'application/json')])

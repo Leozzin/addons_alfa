@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_to_attente_traitement" model="ir.actions.server">
+        <field name="name">To > En Attente de Traitement</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="binding_model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="groups_id" eval="[(4,ref('group_helpdesk_manager'))]" />
+        <!-- <field name="domain">[('create_uid', '=', user.id)]</field> -->
+        <field name="code">
+            action = records.to_attente_traitement()
+        </field>
+    </record>
+    <record id="action_to_cours_traitement" model="ir.actions.server">
+        <field name="name">To > En Cours de Traitement</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="binding_model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="groups_id" eval="[(4,ref('group_helpdesk_manager'))]" />
+        <field name="code">
+            action = records.to_cours_traitement()
+        </field>
+    </record>
+    <record id="action_to_traite" model="ir.actions.server">
+        <field name="name">To > Traité</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="binding_model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="groups_id" eval="[(4,ref('group_helpdesk_manager'))]" />
+        <field name="code">
+            action = records.to_traite()
+        </field>
+    </record>
+    <record id="action_to_avoir_a_valider" model="ir.actions.server">
+        <field name="name">To > Avoir à Valider</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="binding_model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="groups_id" eval="[(4,ref('group_helpdesk_manager'))]" />
+        <field name="code">
+            action = records.to_avoir_a_valider()
+        </field>
+    </record>
+    <record id="action_to_a_cloturer" model="ir.actions.server">
+        <field name="name">To > à Clôturer</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="binding_model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="groups_id" eval="[(4,ref('group_helpdesk_manager'))]" />
+        <field name="code">
+            action = records.to_a_cloturer()
+        </field>
+    </record>
+
+    <record id="action_to_resolu" model="ir.actions.server">
+        <field name="name">To > Résolu</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="binding_model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="groups_id" eval="[(4,ref('group_helpdesk_manager'))]" />
+        <field name="code">
+            action = records.to_resolu()
+        </field>
+    </record>
+
+    <record id="action_to_non_resolu" model="ir.actions.server">
+        <field name="name">To > Non Résolu</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="binding_model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="groups_id" eval="[(4,ref('group_helpdesk_manager'))]" />
+        <field name="code">
+            action = records.to_non_resolu()
+        </field>
+    </record>
+
+    <record id="action_to_avoir_fournisseur" model="ir.actions.server">
+        <field name="name">To > Avoir Fournisseur</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="binding_model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="groups_id" eval="[(4,ref('group_helpdesk_manager'))]" />
+        <field name="code">
+            action = records.to_avoir_fournisseur()
+        </field>
+    </record>
+
+    <record id="action_to_attente_retour_marchandise" model="ir.actions.server">
+        <field name="name">To > Attente Retour Marchandise</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="binding_model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="groups_id" eval="[(4,ref('group_helpdesk_manager'))]" />
+        <field name="code">
+            action = records.to_attente_retour_marchandise()
+        </field>
+    </record>
+
+    <record id="action_to_en_attente_paiement" model="ir.actions.server">
+        <field name="name">To > En Attente de Paiement Amazon</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="binding_model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="groups_id" eval="[(4,ref('group_helpdesk_manager'))]" />
+        <field name="code">
+            action = records.to_en_attente_paiement()
+        </field>
+    </record>
+    
+    <record id="action_create_receipt" model="ir.actions.server">
+        <field name="name">Create Receipt</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="binding_model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="code">
+            action = records.create_receipt()
+        </field>
+    </record>
+
+    <record id="action_create_delivery_order" model="ir.actions.server">
+        <field name="name">Create Delivery Order</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="binding_model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="code">
+            action = records.create_delivery_order()
+        </field>
+    </record>
+    <record id="action_disassign_user" model="ir.actions.server">
+        <field name="name">Disassign User</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="binding_model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="groups_id" eval="[(4,ref('group_helpdesk_manager'))]" />
+        <field name="code">
+            action = records.disassign_user()
+        </field>
+    </record>
+    <record id="action_test" model="ir.actions.server">
+        <field name="name">Test</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="binding_model_id" ref="helpdesk_mgmt.model_helpdesk_ticket"/>
+        <field name="groups_id" eval="[(4,ref('group_helpdesk_manager'))]" />
+        <field name="code">
+            action = records.test()
+        </field>
+    </record>
+</odoo>

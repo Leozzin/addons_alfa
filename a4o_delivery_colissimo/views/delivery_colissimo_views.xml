@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is part of an Adiczion's Module.
+The COPYRIGHT and LICENSE files at the top level of this repository
+contains the full copyright notices and license terms. -->
+<odoo>
+    <record id="view_delivery_carrier_form_with_provider_colissimo" model="ir.ui.view">
+        <field name="name">delivery.carrier.form.provider.colissimo</field>
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='destination']" position='before'>
+                <page name="colisimo_pricing" string="Pricing" attrs="{'invisible': [('delivery_type', '!=', 'colissimo')]}">
+                    <group name="general">
+                        <field name="price_rule_ids" nolabel="1"/>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//page[@name='destination']" position='after'>
+                <page string="Colissimo Configuration" attrs="{'invisible': [('delivery_type', '!=', 'colissimo')]}">
+                    <group>
+                        <group string="Details" id="details">
+                            <field name="coli_service_type" attrs="{'required': [('delivery_type', '=', 'colissimo')]}"/>
+                            <!--<field name="coli_max_point" attrs="{'required': [('delivery_type', '=', 'colissimo')]}"/>-->
+                            <!--<field name="coli_distance_search" attrs="{'required': [('delivery_type', '=', 'colissimo')]}"/>-->
+                        </group>
+                        <group string="Printing Options" id="printing_opt">
+                            <field name="coli_label_format" attrs="{'required': [('delivery_type', '=', 'colissimo')]}"/>
+                            <field name="coli_remove_label" attrs="{'required': [('delivery_type', '=', 'colissimo')]}"/>  
+                            <field name="coli_direct_printing" on_change="onchange_coli_direct_printing(coli_direct_printing)"/>
+                                <div class="text-muted"
+                                    attrs="{'invisible': [('coli_direct_printing', '=', False)]}">
+                                    open the wizard for selecting a printer if base_report_to_printer module is installed.
+                                </div>
+                                <button type='object' icon="fa-arrow-right" 
+                                        class="btn-link"
+                                        name="action_get_printer" string="Select a printer"
+                                        attrs="{'invisible': [('coli_direct_printing', '=', False)]}"/>
+                            <field name="coli_printer_name" invisible="1"/>
+                            <field name="coli_printer_id" attrs="{'invisible': [('coli_direct_printing', '=', False)]}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Production environment" id="prod">
+                            <field name="coli_account_number" placeholder="123456" attrs="{'required': [('prod_environment', '=', True), ('delivery_type', '=', 'colissimo')]}"/>
+                            <field name="coli_passwd" password="True" attrs="{'required': [('prod_environment', '=', True), ('delivery_type', '=', 'colissimo')]}"/>
+                        </group>
+                        <group string="Customs" id="customs">
+                            <field name="coli_customs_category" attrs="{'required': [('delivery_type', '=', 'colissimo'), ('coli_direct_printing', '=', 'True')]}"/>
+                            <field name="coli_country_origin_id" attrs="{'required': [('delivery_type', '=', 'colissimo'), ('coli_direct_printing', '=', 'True')]}"/>
+                        </group>
+                        <group string="URL(s)" id="url1" colspan="4" cols="2">
+                            <field name="coli_shipping_url" placeholder="https://server.com/folder/WebService?wsdl" attrs="{'required': [('delivery_type', '=', 'colissimo')]}"/>
+                            <!--<field name="coli_tracking_url" placeholder="https://server.com/folder/WebService?wsdl" attrs="{'required': [('delivery_type', '=', 'colissimo')]}"/>-->
+                            <field name="coli_relaypoint_url" placeholder="https://server.com/folder/WebService?wsdl" attrs="{'required': [('delivery_type', '=', 'colissimo')]}"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+

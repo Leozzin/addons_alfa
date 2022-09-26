@@ -1,0 +1,50 @@
+Version 13.0.11 - 2021-03-24
+  * Allows the use of the Intrastat module of the enterprise version
+Version 13.0.11 - 2021-03-24
+  * Correcting the recovery of invoice name
+  * Update the method for getting recipient name
+  * Bug fixes (see commits for details)
+Version 13.0.10 - 2021-03-12
+  * Obtain parent's email, mobile, and phone if needed
+Version 13.0.9 - 2021-03-01
+  * Changed the way to retrieve invoice numbers for CN23
+  * Bugfix
+Version 13.0.8 - 2021-02-27
+  * Addition of the invoice number in CN23
+Version 13.0.7 - 2021-02-19
+  * Adds use of Instrastat module from OCA if available
+  * Updating documentation
+  * Some other small fixes
+Version 13.0.6 - 20201210
+  * Taking into account the total weight of the delivery for the search for relay points.
+Version 13.0.5 - 20201208
+  * Bug fixes (see commits for details)
+Version 13.0.4 - 20201208
+  * Bug fixes (see commits for details)
+Version 13.0.3 - 20201208
+  * Adds the delivery price recovery method
+  * Bug fixes (see commits for details)
+Version 13.0.2 - 2020-12-04
+  * Addition of price list management
+Version 13.0.1 - 2020-12-01
+	* Port to v13
+Version 12.0.6 - 2020-10-09
+  * Optimized name retrieval for labels
+  * Some other small fixes
+Version 12.0.5 - 2020-09-21
+  * Fixing misspelling address content
+Version 12.0.4 - 2020-09-09
+  * Fixes getting name information for labels
+Version 12.0.3 - 2020-08-15
+  * Addition of slip management
+  * Corrects/adds management of tracking links when there are several packages
+  * Some other small fixes
+Version 12.0.2 - 2020-07-29
+  * Name and first name management
+  * Shipping weight management
+Version 12.0.1 - 2020-07-26
+  * Code formatting, cleanup, small fixes
+  * Update French translation
+  * Update the doc
+Version 12.0.0 - 2020-05-17
+  * Initial release

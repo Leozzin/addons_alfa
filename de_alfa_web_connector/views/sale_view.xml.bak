@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- search view -->
+    <record id="custom_view_order_search" model="ir.ui.view">
+            <field name="name">sale.order.search.inherit.sale.old</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.sale_order_view_search_inherit_sale"/>
+            <field name="arch" type="xml">
+                <filter name="to_invoice" position="after">
+                    <field name="old_id" string="Old ID" />
+                    <field name="delivery_status" string="Status de livraison" />
+                </filter>
+
+            </field>
+    </record>
+        <record id="custom_view_quotation_search" model="ir.ui.view">
+            <field name="name">sale.order.search.inherit.sale.old</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+            <field name="arch" type="xml">
+                <filter name="my_quotation" position="after">
+                    <field name="old_id" string="Old ID" />
+                    <field name="delivery_status" string="Status de livraison" />
+                </filter>
+
+            </field>
+    </record>
+    <!-- tree view -->
+	<record id="custom_view_quotation_tree" model="ir.ui.view">
+            <field name="name">sale.order.tree.inherit.sale.stock</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="replace">
+                    <field name="old_id"/>
+                    <field name="margin" sum="Total Margin"/>
+                    <field name="custom_discount" sum="Total Discount"/>
+                    <field name="lost_margin_float" sum="Total Lost Margin"/>
+                    <field name="marge" sum="Total Marge"/>
+                    <field name="flag_nc" widget="badge" decoration-success="flag_nc == 'nc'" decoration-info="flag_nc == '411'" />
+                </xpath>
+               <!-- <field name="date_offset_format" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field> -->
+                 <field name="partner_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                  <field name="activity_ids" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+
+                
+                <xpath expr="//field[@name='date_order']" position="replace">
+                    <field name="custom_order_date" optional="hide"/>
+                    <field name="date_offset_format"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    <record id="custom_view_quotation_tree_with_onboarding" model="ir.ui.view">
+            <field name="name">sale.order.tree.inherit.sale.stock</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="replace">
+                    <field name="old_id"/>
+                     <field name="margin" sum="Total Margin"/>
+                    <field name="custom_discount" sum="Total Discount"/>
+                    <field name="lost_margin_float" sum="Total Lost Margin"/>
+                    <field name="marge" sum="Total Marge"/>
+                    <field name="flag_nc" widget="badge" decoration-success="flag_nc == 'nc'" decoration-info="flag_nc == '411'" />
+                </xpath>
+                  <field name="partner_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                  <field name="activity_ids" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                
+                <xpath expr="//field[@name='create_date']" position="replace">
+                    <field name="custom_order_date" optional="hide"/>
+                    <field name="date_offset_format"/>
+                </xpath>
+            </field>
+        </record>
+
+    <!-- form view -->
+     <record id="custom_view_order_form_inherit_sale_stock" model="ir.ui.view">
+            <field name="name">sale.order.form.sale.stock</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_view_invoice']" position="before">
+                    <field name="purchase_order_ids" invisible="1"/>
+                    <button type="object" name="action_view_purchase_order" class="oe_stat_button" icon="fa-bars" attrs="{'invisible': [('is_converted_to_purchase', '=', False)]}" groups="base.group_user">
+                        <!--<field name="delivery_count" widget="statinfo" string="Delivery"/> --> Achat
+                    </button> </xpath>
+            	
+               <!-- <field name="date_order" position="replace">
+                    <field name="date_order" />
+                </field> -->
+			
+            	<xpath expr="//field[@name='payment_term_id']" position="after">
+<!--                  <button name="script_update"  string="Mark asTodo" type="object" class="oe_highlight" />-->
+<!--                     <button name="script_update_mixte"  string="Mark asTodo mixte" type="object" class="oe_highlight" />-->
+<!--                    <button name="script_update_stock"  string="Mark asTodo name" type="object" class="oe_highlight" />-->
+<!--                      <button name="correction_stock"  string="Correction stock" type="object" class="oe_highlight" />-->
+<!--                    <button name="correction_purchase"  string="Correction purchase" type="object" class="oe_highlight" />-->
+<!--                    <button name="correction_delivery"  string="Correction delevey" type="object" class="oe_highlight" />-->
+
+<!--                    <button name="correction_detail"  string="Correction detail" type="object" class="oe_highlight" /> -->
+                     <button name="order_1"  string="order1" type="object" class="oe_highlight" />
+                     <button name="order_4"  string="order4" type="object" class="oe_highlight" />
+                    <button name="order_2"  string="order2" type="object" class="oe_highlight" />
+                     <button name="update_status"  string="updatestatus" type="object" class="oe_highlight" />
+                                         <button name="correction_service"  string="correctpoduct" type="object" class="oe_highlight" />
+                                         <button name="correction_product"  string="correctpoductqty" type="object" class="oe_highlight" />
+
+            		<field name="is_converted_to_purchase" readonly="True"/>
+                    <field name="is_update" invisible="1"/>
+            		<field name="purchase_order_ids" widget="many2many_tags" readonly="True"/>
+            	</xpath>
+            	 <xpath expr="//page/field[@name='order_line']/tree//field[@name='product_uom_category_id']" position="after">
+                     <field name="custom_supplier_id" />
+                 </xpath>
+                <xpath expr="//page/field[@name='order_line']/form/group" position="after">
+                    <group>
+                    	<group>
+                    		<field name="product_code_custom"/>
+		                    <field name="tx_tva"/>
+		                    <field name="tht"/>
+		                    <field name="ttva"/>
+		                    <field name="ttc"/>
+		                    <field name="custom_supplier_price"/>
+		                    <field name="management_cost"/>
+		                    <field name="provider_ref"/>
+                            <field name="detail_order_id" />
+
+                    	</group>
+                    	<group>
+                    		<field name="custom_carrier"/>
+		                    <field name="tracking"/>
+		                    <field name="delivery_type"/>
+		                    <field name="delivery_cost"/>
+		                    <field name="custom_order_id"/>
+		                    <field name="custom_product_id"/>
+		                    <field name="custom_supplier_idd"/>
+		                    <field name="custom_supplier_id"/>
+							<field name="promo" />
+                    	</group>
+                    </group>
+                    
+                    
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Other Detail">
+                        <group>
+                            <group>
+	                            <field name="old_id" string="Old ID"/>
+		                        <field name="custom_modified"/>
+		                        <field name="custom_type"/>
+		                        <field name="hors_tva"/>
+		                        <field name="custom_payment"/>
+		                        <field name="provider_ref"/>
+		                        <field name="provenance"/>
+		                        <field name="contrat"/>
+		                        <field name="order_ref"/>
+		                        <field name="custom_order_date"/>
+		                    </group>
+		                    <group>
+		                        <field name="delivery_status"/>
+		                        <field name="delivery_date"/>
+		                        <field name="date_offset"/>
+		                        <field name="date_offset_format"/>
+		                        <field name="margin"/>
+		                        <field name="custom_discount"/>
+		                        <field name="marge"/>
+		                        <field name="lost_margin_float"/>
+		                        <field name="provenance_ref"/>
+		                        <field name="commission"/>
+		                    </group>
+	                    </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        
+	
+		
+		<!-- pivot -->
+    <record id="sale_order_pivot_inherit" model="ir.ui.view">
+            <field name="name">sale.order.pivot.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sale_order_pivot"/>
+            <field name="arch" type="xml">
+                <field name="date_order" position="replace" >
+                    <field name="user_id" type="row"/>
+                     <field name="flag_nc" type="col"/>
+
+                </field>
+                <field name="amount_total" position="replace" >
+                </field>
+            </field>
+        </record>
+        
+        
+
+
+        
+
+</odoo>

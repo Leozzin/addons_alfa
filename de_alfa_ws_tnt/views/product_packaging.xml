@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright 2021 Tecnativa - Víctor Martínez
+License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+
+<odoo>
+    <record id="view_stock_quant_alfa__alfa_form" model="ir.ui.view">
+        <field name="model">stock.quant.package</field>
+        <field name="inherit_id" ref="stock.view_quant_package_form" />
+        <field name="arch" type="xml">
+             <div name="button_box" position="after">
+                <div class="right"><field name="status_code" widget="badge"  decoration-info="1" /></div>
+
+
+            </div>
+            <field name="quant_ids" position="before" >
+               <field name="status_code" invisible="1" />
+                 <field name="delivery_state" invisible="1" />
+                <group>
+                <field name="carrier_tracking_ref" />
+                <field name="carrier_tracking_url" widget="url"/>
+                </group>
+            </field>
+        </field>
+    </record>
+
+      <record id="view_stock_quant_alfa__alfa_kanban" model="ir.ui.view">
+        <field name="model">stock.quant.package</field>
+        <field name="inherit_id" ref="stock.view_quant_package_kanban" />
+        <field name="arch" type="xml">
+            <div class="o_kanban_record_top mb0"  position="after" >
+
+           <div> <field name="carrier_tracking_ref" /></div>
+              <div>  <field name="carrier_tracking_url" widget="url" /></div>
+            <div>  <field name="status_code" widget="badge" /></div>
+            </div>
+
+        </field>
+    </record>
+</odoo>

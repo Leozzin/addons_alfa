@@ -1,0 +1,79 @@
+<odoo>
+    <record id="view_stock_move_line_operation_tree" model="ir.ui.view">
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_operation_tree" />
+        <field name="arch" type="xml">
+                  <field name="package_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+     <record id="view_stock_move_line_detailed_operation_tree_inherit" model="ir.ui.view">
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_detailed_operation_tree" />
+        <field name="arch" type="xml">
+                  <field name="package_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+    <record id="view_stock_picking_alfa_form" model="ir.ui.view">
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="after">
+                <div class="right"> <field name="status_code" widget="badge" decoration-info="1" /></div>
+
+
+            </div>
+
+            <xpath expr="//notebook" position="inside">
+                <page string="Packages">
+
+                    <field name="package_ids" >
+                        <tree editable="bottom">
+                         <field name="name" />
+
+                <field name="carrier_tracking_ref" />
+                <field name="carrier_tracking_url" widget="url"/>
+                           <field name="status_code" widget="badge" decoration-info="1" />
+                        </tree>
+                    </field>
+					<field name="pdf_label" />
+                </page>
+            </xpath>
+            	<xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='product_id']" position="after">
+                    <field name="sale_line_id" />
+				<field name="tracking_ws" optional='hide'/>
+                    <field name="custom_carrier"  optional='hide'/>
+
+			</xpath>
+            <xpath expr="//page[@name='detailed_operations_hidden']//button[@name='action_put_in_pack']" position="attributes">
+                 <attribute name="invisible">1</attribute>
+            </xpath>
+     <xpath expr="//page[@name='detailed_operations_shown']//button[@name='action_put_in_pack']" position="attributes">
+         <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='operations']//button[@name='action_put_in_pack']" position="attributes">
+         <attribute name="invisible">1</attribute>
+            </xpath>
+           <page name="detailed_operations_hidden" attrs="{'invisible': ['|', ('show_operations', '=', False), ('show_reserved', '=', True)]}" position="inside">
+            <button class="oe_highlight" name="create_one_pack" type="object" string="Ajouter un autre pack" attrs="{'invisible': [('state', 'in', ('draft', 'done', 'cancel'))]}" />
+                                                        <field name="last_pack" attrs="{'invisible': [('last_pack', '=', False)]}" groups="stock.group_tracking_lot"/>
+
+
+                                        </page>
+             <page name="detailed_operations_shown" attrs="{'invisible': ['|', ('show_operations', '=', False), ('show_reserved', '=', False)]}" position="inside">
+            <button class="oe_highlight" name="create_one_pack" type="object" string="Ajouter un autre pack" attrs="{'invisible': [('state', 'in', ('draft', 'done', 'cancel'))]}" />
+
+                                         <group>
+                         <field name="last_pack" widget="badge" /></group>
+
+
+
+
+
+                                        </page>
+        </field>
+    </record>
+</odoo>

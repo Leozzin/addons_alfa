@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# This file is part of an Adiczion's Module.
+# The COPYRIGHT and LICENSE files at the top level of this repository
+# contains the full copyright notices and license terms.
+-->
+<odoo>
+    <data noupdate="1">
+        <record id="chronopost_custom_parcel" model="product.packaging">
+            <field name="name">Chronopost Custom Parcel</field>
+            <field name="max_weight">30.0</field>
+            <field name="package_carrier_type">chronopost</field>
+        </record>
+        <record id="product_product_delivery_chronopost_13" model="product.product">
+            <field name="name">Chronopost Express (Chrono 13)</field>
+            <field name="default_code">chrono01</field>
+            <field name="type">service</field>
+            <field name="categ_id" ref="delivery.product_category_deliveries"/>
+            <field name="sale_ok" eval="False"/>
+            <field name="purchase_ok" eval="False"/>
+            <field name="list_price">0.0</field>
+        </record>
+        <record id="product_product_delivery_chrono_relay_13" model="product.product">
+            <field name="name">Chronopost Relay (Chrono Relay 13)</field>
+            <field name="default_code">chrono02</field>
+            <field name="type">service</field>
+            <field name="categ_id" ref="delivery.product_category_deliveries"/>
+            <field name="sale_ok" eval="False"/>
+            <field name="purchase_ok" eval="False"/>
+            <field name="list_price">0.0</field>
+        </record>
+        <record id="delivery_carrier_chronopost_express" model="delivery.carrier">
+            <field name="name">Chronopost Express</field>
+            <field name="product_id" ref="a4o_delivery_chronopost.product_product_delivery_chronopost_13"/>
+            <field name="product_code">01</field>
+            <field name="delivery_type">chronopost</field>
+            <field name="cpst_test_account_number">19869502</field>
+            <field name="cpst_test_passwd">255562</field>
+            <field name="cpst_shipping_url">https://ws.chronopost.fr/shipping-cxf/ShippingServiceWS?wsdl</field>
+            <field name="cpst_tracking_url">https://ws.chronopost.fr/tracking-cxf/TrackingServiceWS?wsdl</field>
+            <field name="cpst_relaypoint_url">https://ws.chronopost.fr/recherchebt-ws-cxf/PointRelaisServiceWS?wsdl</field>
+        </record>
+        <record id="delivery_carrier_chronopost_relay" model="delivery.carrier">
+            <field name="name">Chronopost Express Relais</field>
+            <field name="product_id" ref="a4o_delivery_chronopost.product_product_delivery_chrono_relay_13"/>
+            <field name="product_code">86</field>
+            <field name="delivery_type">chronopost</field>
+            <field name="cpst_test_account_number">19869502</field>
+            <field name="cpst_test_passwd">255562</field>
+            <field name="cpst_shipping_url">https://ws.chronopost.fr/shipping-cxf/ShippingServiceWS?wsdl</field>
+            <field name="cpst_tracking_url">https://ws.chronopost.fr/tracking-cxf/TrackingServiceWS?wsdl</field>
+            <field name="cpst_relaypoint_url">https://ws.chronopost.fr/recherchebt-ws-cxf/PointRelaisServiceWS?wsdl</field>
+        </record>
+        <record id="delivery_carrier_chronopost_dangerous_express" model="delivery.carrier">
+            <field name="name">Chronopost Dangerous Express</field>
+            <field name="product_id" ref="a4o_delivery_chronopost.product_product_delivery_chronopost_13"/>
+            <field name="product_code">1M</field>
+            <field name="delivery_type">chronopost</field>
+            <field name="cpst_test_account_number">19869502</field>
+            <field name="cpst_test_passwd">255562</field>
+            <field name="cpst_shipping_url">https://ws.chronopost.fr/shipping-cxf/ShippingServiceWS?wsdl</field>
+            <field name="cpst_tracking_url">https://ws.chronopost.fr/tracking-cxf/TrackingServiceWS?wsdl</field>
+            <field name="cpst_relaypoint_url">https://ws.chronopost.fr/recherchebt-ws-cxf/PointRelaisServiceWS?wsdl</field>
+        </record>
+    </data>
+</odoo>

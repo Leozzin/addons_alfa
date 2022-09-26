@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright 2021 Tecnativa - Víctor Martínez
+License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="view_delivery_carrier_tnt_alfa_form" model="ir.ui.view">
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page
+                    string="TNT SOAP"
+                    name="configuration_tnt_alfa"
+                    attrs="{'invisible': [('delivery_type', '!=', 'tnt_alfa')]}"
+                >
+                    <group>
+                        <group string="Credentials">
+                             <field
+                                name="tnt_alfa_ws_username"
+                                attrs="{'required': [('delivery_type', '=', 'tnt_alfa')]}"
+                            />
+                            <field
+                                name="tnt_alfa_ws_password"
+                                attrs="{'required': [('delivery_type', '=', 'tnt_alfa')]}"
+                            />
+                            <field
+                                name="tnt_alfa_ws_account"
+                                attrs="{'required': [('delivery_type', '=', 'tnt_alfa')]}"
+                            />
+
+                        </group>
+                        <group string="Misc">
+                            <field
+                                name="service_code"
+                                attrs="{'required': [('delivery_type', '=', 'tnt_alfa')]}"
+                            />
+
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

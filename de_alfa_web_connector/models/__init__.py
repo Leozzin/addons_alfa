@@ -1,0 +1,9 @@
+# Copyright (C) Dynexcel Technologies.
+
+from . import res_partner
+from . import product_product
+from . import sale_order
+from . import stock_picking
+from . import product_supplierinfo
+from . import stock_quant
+from . import mail_message
