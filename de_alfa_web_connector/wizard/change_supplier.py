@@ -35,6 +35,97 @@ class SUPPLIER_CHANGE(models.TransientModel):
     ancien_supplier_id = fields.Many2one('res.partner','Ancien fournisseur',default=compute_supplier_id)
 
     def change_supplier(self):
+        DROP_TYPE = self.env['stock.picking.type'].search([('name', '=', 'Dropshipping')], limit=1)
+        DELIVERY_TYPE = self.env['stock.picking.type'].search([('name', '=', 'Delivery Orders')], limit=1)
+
+        active = self._context.get('active_id')
+        move_obj = self.env['stock.move'].browse(active)
+        picking_obj = move_obj.picking_id
+        product_obj = move_obj.product_id
+        supplier_id = self.new_supplier_id
+        supplier = self.new_supplier
+        ref = picking_obj.sale_reference
+        new_picking = False
+        sale_obj = self.env['sale.order'].sudo().search([('old_id', '=', picking_obj.origin)], limit=1)
+
+        if product_obj.type=='product':
+            if supplier in ['1', '0', False]:
+                if picking_obj.picking_type_id.id == DROP_TYPE.id:
+                    search_delivery = self.env['stock.picking'].sudo().search([('origin', '=', picking_obj.origin), ('picking_type_id', '=', DELIVERY_TYPE.id)], limit=1)
+                    if not search_delivery:
+                        # Create Delivery Order:
+                        new_delivery = self.env['stock.picking'].sudo().create({
+                            "partner_id": picking_obj.partner_id.id,
+                            "picking_type_id": DELIVERY_TYPE.id,
+                            "origin": picking_obj.origin,
+                            "location_id":DELIVERY_TYPE.default_location_src_id.id,
+                            "location_dest_id": DELIVERY_TYPE.default_location_dest_id.id,
+                            "custom_sale_id": picking_obj.sale_id.id,
+                            "scheduled_date": picking_obj.scheduled_date,
+                            "sale_reference": ref
+                        })
+                        move_obj.sudo().write({"picking_id": new_delivery.id})
+                        new_picking = new_delivery
+                    else:
+                        move_obj.sudo().write({"picking_id": search_delivery.id})
+                        new_picking = search_delivery
+            else:
+                if picking_obj.picking_type_id.id == DELIVERY_TYPE.id:
+                    search_drop = self.env['stock.picking'].sudo().search([('origin', '=', picking_obj.origin), ('picking_type_id', '=', DROP_TYPE.id)], limit=1)
+                    if not search_drop:
+                        new_drop = self.env['stock.picking'].sudo().create({
+                            "partner_id": picking_obj.partner_id.id,
+                            "picking_type_id": DROP_TYPE.id,
+                            "origin": picking_obj.origin,
+                            "location_id":DROP_TYPE.default_location_src_id.id,
+                            "location_dest_id": DROP_TYPE.default_location_dest_id.id,
+                            "custom_sale_id": picking_obj.sale_id.id,
+                            "scheduled_date": picking_obj.scheduled_date,
+                            "sale_reference": ref
+                        })
+                        move_obj.sudo().write({"picking_id": new_drop.id})
+                        new_picking = new_drop
+                    else:
+                        move_obj.sudo().write({"picking_id": search_drop.id})
+                        new_picking = search_drop
+        move_obj.supplier_old_id = supplier
+        move_obj.custom_supplier_id = supplier_id
+
+
+        if self.new_supplier == '1':
+            url = 'http://141.94.171.159/crm/Companies/majStock2?iscron=cron'
+            post_data = {"product_id": product_obj.old_id}
+            response = requests.post(url, json=post_data, auth=HTTPBasicAuth('alfaprint', '590-Alfaprint'))
+        # raise Exception(response.content)
+        
+        # raise Exception("origin:",origin,"| detail_order_id:",str(detail_order_id),"| new_supplier:",self.new_supplier)
+        url=  'http://141.94.171.159/crm/Propdetails/changeprov'
+        
+        url='http://141.94.171.159/crm/Propdetails/changeprov/%s/%s/%s/odoo' % (picking_obj.origin,str(move_obj.detail_order_id),self.new_supplier,)
+        # raise Exception((origin,str(detail_order_id),self.new_supplier,))
+        requests.post(url, auth=HTTPBasicAuth('alfaprint', '590-Alfaprint'))
+
+        if sale_obj:
+            for line in sale_obj.order_line:
+                if line.product_id.id == product_obj.id and line.custom_supplier_idd == int(self.ancien_supplier):
+                    line.custom_supplier_idd = int(supplier)
+                    line.custom_supplier_id = supplier_id
+                    break
+            if sale_obj.custom_type in ['1', '25'] or sale_obj.state=='sale':
+                sale_obj.create_purchase_quotation()
+        if not picking_obj.move_ids_without_package:
+            picking_obj.sudo().unlink()
+            if new_picking:
+                return {
+                    'type': 'ir.actions.act_window',
+                    'name': 'Create Receipt',
+                    'res_model': 'stock.picking',
+                    'res_id': new_picking.id,
+                    'view_type': 'form',
+                    'view_mode': 'form',
+                }
+
+    def change_supplier2(self):
         active=self._context.get('active_id')
         DROP = self.env['stock.picking.type'].search([('name', '=', 'Dropshipping')])
         DELIVERY = self.env['stock.picking.type'].search([('name', '=', 'Delivery Orders')])
