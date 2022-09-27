@@ -47,7 +47,7 @@ class SUPPLIER_CHANGE(models.TransientModel):
         ref = picking_obj.sale_reference
         new_picking = False
         sale_obj = self.env['sale.order'].sudo().search([('old_id', '=', picking_obj.origin)], limit=1)
-
+        picking_obj.do_unreserve()
         if product_obj.type=='product':
             if supplier in ['1', '0', False]:
                 if picking_obj.picking_type_id.id == DROP_TYPE.id:
@@ -64,10 +64,24 @@ class SUPPLIER_CHANGE(models.TransientModel):
                             "scheduled_date": picking_obj.scheduled_date,
                             "sale_reference": ref
                         })
-                        move_obj.sudo().write({"picking_id": new_delivery.id})
+                        move_obj.sudo().write({
+                            "picking_id": new_delivery.id,
+                            "state": "draft",
+                            "location_id": new_delivery.location_id.id
+                        })
                         new_picking = new_delivery
                     else:
-                        move_obj.sudo().write({"picking_id": search_delivery.id})
+                        search_delivery.do_unreserve()
+                        move_obj.sudo().write({
+                            "picking_id": search_delivery.id,
+                            "location_id": search_delivery.location_id.id,
+                            "state": "draft"
+                        })
+                        try:
+                            search_delivery.action_confirm()
+                            search_delivery.action_assign()
+                        except:
+                            pass
                         new_picking = search_delivery
             else:
                 if picking_obj.picking_type_id.id == DELIVERY_TYPE.id:
@@ -83,14 +97,35 @@ class SUPPLIER_CHANGE(models.TransientModel):
                             "scheduled_date": picking_obj.scheduled_date,
                             "sale_reference": ref
                         })
-                        move_obj.sudo().write({"picking_id": new_drop.id})
+                        move_obj.sudo().write({
+                            "picking_id": new_drop.id,
+                            "state": "draft",
+                            "location_id": new_drop.location_id.id
+                        })
                         new_picking = new_drop
                     else:
-                        move_obj.sudo().write({"picking_id": search_drop.id})
+                        search_drop.do_unreserve()
+                        move_obj.sudo().write({
+                            "picking_id": search_drop.id,
+                            "location_id": search_drop.location_id.id,
+                            "state": "draft"
+                        })
+                        try:
+                            search_drop.action_confirm()
+                            search_drop.action_assign()
+                        except:
+                            pass
                         new_picking = search_drop
         move_obj.supplier_old_id = supplier
         move_obj.custom_supplier_id = supplier_id
-
+        try:
+            picking_obj.action_confirm()
+            picking_obj.action_assign()
+        except:
+            pass
+        if new_picking:
+            new_picking.action_confirm()
+            new_picking.action_assign()
 
         if self.new_supplier == '1':
             url = 'http://141.94.171.159/crm/Companies/majStock2?iscron=cron'
@@ -100,7 +135,7 @@ class SUPPLIER_CHANGE(models.TransientModel):
         
         # raise Exception("origin:",origin,"| detail_order_id:",str(detail_order_id),"| new_supplier:",self.new_supplier)
         url=  'http://141.94.171.159/crm/Propdetails/changeprov'
-        
+
         url='http://141.94.171.159/crm/Propdetails/changeprov/%s/%s/%s/odoo' % (picking_obj.origin,str(move_obj.detail_order_id),self.new_supplier,)
         # raise Exception((origin,str(detail_order_id),self.new_supplier,))
         requests.post(url, auth=HTTPBasicAuth('alfaprint', '590-Alfaprint'))
@@ -124,6 +159,11 @@ class SUPPLIER_CHANGE(models.TransientModel):
                     'view_type': 'form',
                     'view_mode': 'form',
                 }
+        else:
+            if picking_obj.state not in ['done', 'cancel']:
+                picking_obj.do_unreserve()
+                picking_obj.action_confirm()
+                picking_obj.action_assign()
 
     def change_supplier2(self):
         active=self._context.get('active_id')
