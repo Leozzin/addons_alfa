@@ -7,3 +7,4 @@ from . import stock_picking
 from . import product_supplierinfo
 from . import stock_quant
 from . import mail_message
+from . import hr_leave
